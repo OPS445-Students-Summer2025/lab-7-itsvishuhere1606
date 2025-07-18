@@ -33,6 +33,31 @@ def sum_times(t1, t2):
 
     return sum
 
+def change_time(time, seconds):
+    time.second += seconds
+
+    # Normalize seconds > 60
+    while time.second >= 60:
+        time.second -= 60
+        time.minute += 1
+
+    # Normalize seconds < 0
+    while time.second < 0:
+        time.second += 60
+        time.minute -= 1
+
+    # Normalize minutes > 60
+    while time.minute >= 60:
+        time.minute -= 60
+        time.hour += 1
+
+    # Normalize minutes < 0
+    while time.minute < 0:
+        time.minute += 60
+        time.hour -= 1
+
+    # You can choose to also normalize hour if needed
+    return None
 
 def valid_time(t):
     """check for the validity of the time object attributes:
